@@ -1,2 +1,2 @@
-# My-Portfolio.githubio
+# my-portfoliogithubio
 My-Portfolio
