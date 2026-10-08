@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en" style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Bhaskar Sai Utla — Senior UX Designer &amp; Design Systems Architect</title>
+    <!-- Google Fonts: Space Grotesk, Inter & Caveat -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=Space+Grotesk:wght@500;600;700;800&amp;display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for UI & Tool Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Tailwind CSS v3 with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            indigo: '#4F46E5',
+                            'indigo-dark': '#3730A3',
+                            'indigo-light': '#EEF2FF',
+                            amber: '#F97316',
+                            'amber-light': '#FFF7ED',
+                            slate: '#0F172A',
+                            card: '#FFFFFF',
+                            surface: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                        handwriting: ['"Caveat"', 'cursive']
+                    },
+                    boxShadow: {
+                        'glow-indigo': '0 10px 35px -5px rgba(79, 70, 229, 0.3)',
+                        'glow-amber': '0 10px 35px -5px rgba(249, 115, 22, 0.3)',
+                        'soft-card': '0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 4px 12px -2px rgba(15, 23, 42, 0.03)',
+                        'board': '0 25px 60px -15px rgba(15, 23, 42, 0.12), inset 0 2px 4px rgba(255, 255, 255, 0.8)'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- BEGIN: Custom CSS Styles -->
+    <style data-purpose="base-layout">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+
+        .bg-dot-grid {
+            background-image: radial-gradient(#CBD5E1 1.2px, transparent 1.2px);
+            background-size: 20px 20px;
+        }
+
+        .bg-whiteboard-grid {
+            background-image: linear-gradient(to right, rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+    <style data-purpose="animations">
+        @keyframes gentleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        .animate-float {
+            animation: gentleFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes marqueeLeft {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marqueeRight {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .marquee-track-left {
+            display: flex;
+            width: max-content;
+            animation: marqueeLeft 34s linear infinite;
+        }
+
+        .marquee-track-right {
+            display: flex;
+            width: max-content;
+            animation: marqueeRight 30s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-track-left,
+        .marquee-container:hover .marquee-track-right {
+            animation-play-state: paused;
+        }
+
+        .tape {
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(2px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="relative antialiased selection:bg-indigo-500 selection:text-white pb-16">
+    <!-- BEGIN: Scroll Progress Bar -->
+    <div class="fixed top-0 left-0 h-1 bg-gradient-to-r from-indigo-600 via-amber-500 to-indigo-600 z-50 w-0 transition-all duration-150"
+        id="scrollProgressBar" style="width: 0%;"></div>
+    <!-- END: Scroll Progress Bar -->
+    <!-- BEGIN: Main Desktop & Responsive Header -->
+    <header
+        class="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/85 border-b border-slate-200/80 transition-colors duration-200"
+        data-purpose="desktop-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Monogram & Brand Logo -->
+            <a aria-label="Bhaskar Portfolio Home" class="flex items-center gap-3 group shrink-0" href="#hero">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-indigo via-indigo-600 to-purple-600 flex items-center justify-center text-white font-heading font-bold text-lg shadow-md shadow-indigo-500/25 group-hover:scale-105 transition-transform duration-200">
+                    BU
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-2">
+                        <span class="font-heading font-extrabold text-lg text-brand-slate tracking-tight">Bhaskar Sai
+                            Utla</span>
+                        <span
+                            class="hidden xl:inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-[10px] font-semibold text-emerald-700 border border-emerald-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Open to Relocate
+                        </span>
+                    </div>
+                    <span class="text-xs font-semibold text-brand-indigo tracking-wider uppercase">UX Designer &amp;
+                        Design Systems Architect</span>
+                </div>
+            </a>
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-1 p-1 bg-slate-100/80 border border-slate-200/80 rounded-full"
+                data-purpose="desktop-menu"><a
+                    class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#hero">Home</a>
+                <a class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#whiteboard">UX Whiteboard</a>
+                <a class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#skills">Skills &amp; AI</a>
+                <a class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#projects">Selected Work</a>
+                <a class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#experience">Experience</a>
+                <a class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#testimonials">Recommendations</a>
+                <a class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#clients">Clients</a>
+                <a class="px-3.5 py-1.5 rounded-full text-xs font-semibold text-slate-700 hover:text-brand-indigo hover:bg-slate-100 transition-all"
+                    href="#contact">About &amp; Contact</a>
+            </nav>
+            <!-- Desktop Right CTAs & Mobile Hamburger -->
+            <div class="flex items-center gap-3 shrink-0">
+                <a class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-brand-slate bg-slate-100 hover:bg-slate-200 transition-colors"
+                    href="UTLA BHASKAR SAI_CV.html" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-file-arrow-down text-brand-amber"></i>
+                    <span class="">Resume</span>
+                </a>
+                <a class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-brand-indigo to-indigo-600 hover:from-indigo-700 hover:to-brand-indigo shadow-glow-indigo transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                    href="#contact">
+                    <span class="">Hire Me</span>
+                    <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                </a>
+                <button aria-label="Open mobile navigation menu"
+                    class="lg:hidden w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-brand-slate hover:bg-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-indigo"
+                    id="mobileMenuBtn">
+                    <i class="fa-solid fa-bars-staggered text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- END: Main Header -->
+    <!-- BEGIN: Mobile Drawer Menu -->
+    <div aria-hidden="true"
+        class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden transition-opacity duration-300 opacity-0"
+        id="drawerBackdrop"></div>
+    <aside aria-label="Mobile Navigation"
+        class="fixed top-0 right-0 h-full w-[85%] max-w-[340px] bg-white z-50 shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out"
+        id="mobileDrawer">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <div
+                        class="w-9 h-9 rounded-xl bg-brand-indigo text-white flex items-center justify-center font-heading font-bold text-base shadow-sm">
+                        BU
+                    </div>
+                    <span class="font-heading font-bold text-brand-slate">Bhaskar Sai Utla</span>
+                </div>
+                <button aria-label="Close menu"
+                    class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:text-slate-800"
+                    id="closeDrawerBtn">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+            <nav class="mt-6 flex flex-col gap-1.5 font-medium" data-purpose="drawer-links">
+                <a class="drawer-nav-item flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-700 hover:text-brand-indigo hover:bg-indigo-50/70 transition-colors"
+                    href="#hero">
+                    <i class="fa-solid fa-house text-indigo-500 w-5"></i>
+                    <span class="">Home</span>
+                </a>
+                <a class="drawer-nav-item flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-700 hover:text-brand-indigo hover:bg-indigo-50/70 transition-colors"
+                    href="#whiteboard">
+                    <i class="fa-solid fa-chalkboard-user text-indigo-500 w-5"></i>
+                    <span class="">UX Whiteboard</span>
+                </a>
+                <a class="drawer-nav-item flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-700 hover:text-brand-indigo hover:bg-indigo-50/70 transition-colors"
+                    href="#skills">
+                    <i class="fa-solid fa-wand-magic-sparkles text-indigo-500 w-5"></i>
+                    <span class="">Skills &amp; AI Stack</span>
+                </a>
+                <a class="drawer-nav-item flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-700 hover:text-brand-indigo hover:bg-indigo-50/70 transition-colors"
+                    href="#projects">
+                    <i class="fa-solid fa-layer-group text-indigo-500 w-5"></i>
+                    <span class="">Selected Work</span>
+                </a>
+                <a class="drawer-nav-item flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-700 hover:text-brand-indigo hover:bg-indigo-50/70 transition-colors"
+                    href="#experience">
+                    <i class="fa-solid fa-timeline text-indigo-500 w-5"></i>
+                    <span class="">Experience &amp; Education</span>
+                </a>
+                <a class="drawer-nav-item flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-700 hover:text-brand-indigo hover:bg-indigo-50/70 transition-colors"
+                    href="#testimonials">
+                    <i class="fa-solid fa-star text-amber-500 w-5"></i>
+                    <span class="">Recommendations</span>
+                </a>
+                <a class="drawer-nav-item flex items-center gap-3.5 px-3.5 py-3 rounded-xl text-slate-700 hover:text-brand-indigo hover:bg-indigo-50/70 transition-colors"
+                    href="#contact">
+                    <i class="fa-solid fa-envelope-open-text text-brand-amber w-5"></i>
+                    <span class="">About &amp; Contact</span>
+                </a>
+            </nav>
+        </div>
+        <div class="pt-6 border-t border-slate-100 flex flex-col gap-3">
+            <div
+                class="flex items-center gap-2 text-xs text-emerald-600 font-semibold bg-emerald-50 px-3 py-2.5 rounded-xl border border-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="">Bangalore · Open to Relocate Worldwide</span>
+            </div>
+            <a class="w-full py-3 bg-brand-indigo hover:bg-brand-indigo-dark text-white rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-md shadow-indigo-500/25 transition-colors"
+                href="#contact">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+                <span class="">Get in Touch</span>
+            </a>
+        </div>
+    </aside>
+    <!-- END: Mobile Drawer Menu -->
+    <!-- BEGIN: Hero Section (Desktop Two-Column Grid) -->
+    <section
+        class="relative pt-8 lg:pt-16 pb-16 lg:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden bg-dot-grid"
+        data-purpose="hero-section" id="hero">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+            <!-- Left Column: Copy, Typing Badge, Actions, Metrics -->
+            <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left z-10">
+                <!-- Relocate & Availability Status Pill -->
+                <div
+                    class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-soft-card text-xs font-medium text-slate-700 mb-6">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span class="">Available for full-time &amp; contracts</span>
+                    <span class="text-slate-300">|</span>
+                    <span class="text-brand-indigo font-semibold flex items-center gap-1">Relocate Worldwide <i
+                            class="fa-solid fa-earth-americas text-xs"></i></span>
+                </div>
+                <!-- Big Headline with Dynamic Role Badge -->
+                <h1
+                    class="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-brand-slate tracking-tight leading-[1.15]">
+                    Hi, I'm <span
+                        class="bg-gradient-to-r from-brand-indigo via-indigo-600 to-brand-amber bg-clip-text text-transparent">Bhaskar</span>
+                    👋
+                </h1>
+                <div class="h-10 flex items-center mt-3 mb-4">
+                    <span
+                        class="px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-xs sm:text-sm font-semibold text-brand-indigo inline-flex items-center gap-2 shadow-sm">
+                        <i class="fa-solid fa-compass-drafting text-brand-indigo text-xs"></i>
+                        <span class="transition-opacity duration-300 font-mono tracking-tight" id="dynamicRoleText"
+                            style="opacity: 1;">Accessibility &amp; WCAG Leader</span>
+                    </span>
+                </div>
+                <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl font-normal mb-8">
+                    Architecting intuitive, accessible web and mobile experiences. I specialize in scalable <strong
+                        class="text-brand-slate font-semibold">Figma Design Systems</strong>, data-driven Lean UX
+                    workflows, and WCAG AA compliance that drive measurable business outcomes.
+                </p>
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-12">
+                    <a class="w-full sm:w-auto px-7 py-4 rounded-xl font-heading font-bold text-sm text-white bg-gradient-to-r from-brand-indigo to-indigo-600 hover:from-indigo-700 hover:to-brand-indigo shadow-glow-indigo transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5"
+                        href="#projects">
+                        <span class="">Explore Projects</span>
+                        <i class="fa-solid fa-arrow-down-long text-xs"></i>
+                    </a>
+                    <a class="w-full sm:w-auto px-7 py-4 rounded-xl font-heading font-semibold text-sm text-brand-slate bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all flex items-center justify-center gap-2.5 shadow-soft-card"
+                        href="UTLA BHASKAR SAI_CV.html" target="_blank" rel="noopener noreferrer"
+                        download="UTLA BHASKAR SAI_CV.html">
+                        <i class="fa-solid fa-file-arrow-down text-brand-amber text-base"></i>
+                        <span class="">Download Resume</span>
+                    </a>
+                    <a class="w-full sm:w-auto px-6 py-4 rounded-xl font-heading font-semibold text-sm text-indigo-600 bg-indigo-50/70 hover:bg-indigo-100 transition-all flex items-center justify-center gap-2"
+                        href="#whiteboard">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                        <span class="">Interactive Whiteboard</span>
+                    </a>
+                </div>
+                <!-- 4-Column Desktop Metrics Cards Ribbon -->
+                <div class="w-full grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4" data-purpose="hero-stats">
+                    <div
+                        class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-soft-card hover:shadow-md transition-shadow">
+                        <div class="text-2xl lg:text-3xl font-heading font-extrabold text-brand-indigo">4+</div>
+                        <div class="font-heading font-bold text-xs text-brand-slate mt-0.5">Years Experience</div>
+                        <div class="text-[11px] text-slate-500 leading-tight">End-to-end UX &amp; Systems</div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-soft-card hover:shadow-md transition-shadow">
+                        <div class="text-2xl lg:text-3xl font-heading font-extrabold text-brand-amber">4</div>
+                        <div class="font-heading font-bold text-xs text-brand-slate mt-0.5">Major Platforms</div>
+                        <div class="text-[11px] text-slate-500 leading-tight">B2B Mobility &amp; EdTech</div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-soft-card hover:shadow-md transition-shadow">
+                        <div class="text-2xl lg:text-3xl font-heading font-extrabold text-emerald-600">30%</div>
+                        <div class="font-heading font-bold text-xs text-brand-slate mt-0.5">Faster Handoff</div>
+                        <div class="text-[11px] text-slate-500 leading-tight">Figma Design Tokens</div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-soft-card hover:shadow-md transition-shadow">
+                        <div class="text-2xl lg:text-3xl font-heading font-extrabold text-purple-600">+20%</div>
+                        <div class="font-heading font-bold text-xs text-brand-slate mt-0.5">Task Success</div>
+                        <div class="text-[11px] text-slate-500 leading-tight">Heuristic evaluations</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: 3D Avatar Centerpiece with Floating UI Elements -->
+            <div class="lg:col-span-5 relative flex items-center justify-center">
+                <!-- Ambient Radial Glows -->
+                <div
+                    class="absolute w-80 h-80 sm:w-96 sm:h-96 bg-gradient-to-tr from-indigo-300/40 via-purple-300/30 to-amber-200/40 rounded-full blur-3xl -z-10">
+                </div>
+                <div class="absolute -bottom-6 w-64 h-12 bg-slate-400/20 rounded-[100%] blur-md -z-10"></div>
+                <!-- Character Avatar Canvas -->
+                <div
+                    class="relative w-72 sm:w-88 lg:w-[420px] aspect-square flex items-center justify-center animate-float">
+                    <img alt="Bhaskar Sai Utla — 3D Character UX Designer Avatar"
+                        class="w-auto h-80 sm:h-96 max-h-full object-contain filter drop-shadow-2xl select-none pointer-events-none"
+                        src="https://lh3.googleusercontent.com/aida/AEtjO1WyLjFWSDu4gxl5FAtS82cbbHdHdjlMWFBoBD0qgBy9QWsQwwbeVeyPZloGM9SgVN4vt5OWuGrZZDHAiWuTo-9o3gB8aULxDeGxFCicnM2uG4WXDPyDVX1p0zHomvKFAjchrgTrvYBCowmK14USCKoWHITDrWGlX6BhtZn1E8dmOcK-MV54Q5C4uS6H9GC76DlWj7HH4eqNJuCKE7zh44HmqUOzYlW3HrtFiTqiXvh0mqQJX8taUMkjSv0p">
+                    <!-- Interactive / Floating Desktop Badges -->
+                    <!-- Top Left Greeting Pill -->
+                    <div
+                        class="absolute top-4 -left-4 sm:left-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-soft-card border border-slate-100 flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
+                        <span class="text-xl">👋</span>
+                        <div class="text-left">
+                            <div class="text-xs font-bold text-brand-slate leading-none">Hello World!</div>
+                            <div class="text-[10px] text-emerald-600 font-semibold mt-0.5">Available for Hire</div>
+                        </div>
+                    </div>
+                    <!-- Bottom Right Design System Pill -->
+                    <div
+                        class="absolute bottom-10 -right-4 sm:right-0 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-soft-card border border-slate-100 flex items-center gap-3 hover:scale-105 transition-transform cursor-default">
+                        <div
+                            class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 text-white flex items-center justify-center text-xs shadow-sm">
+                            <i class="fa-solid fa-cubes-stacked"></i>
+                        </div>
+                        <div class="flex flex-col text-left">
+                            <span class="text-xs font-bold text-brand-slate leading-tight">Design System</span>
+                            <span class="text-[10px] text-brand-indigo font-semibold">Tokens &amp; Scalable Kits</span>
+                        </div>
+                    </div>
+                    <!-- Mid-Left WCAG Badge -->
+                    <div
+                        class="absolute top-1/2 -left-6 transform -translate-y-1/2 hidden sm:flex bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-soft-card border border-slate-100 items-center gap-2">
+                        <div
+                            class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs">
+                            <i class="fa-solid fa-universal-access"></i>
+                        </div>
+                        <span class="text-xs font-bold text-slate-700">WCAG AA Leader</span>
+                    </div>
+                    <!-- Top Right AI Tooling Badge -->
+                    <div
+                        class="absolute -top-3 right-6 bg-slate-900/90 backdrop-blur-md px-3.5 py-1.5 rounded-full text-white text-[11px] font-medium flex items-center gap-1.5 shadow-md">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                        <span class="">AI-Powered UX</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Hero Section -->
+    <!-- BEGIN: UX Whiteboard Section (Desktop Wide Canvas with Realistic Pins, Sticky Notes & Tray) -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-purpose="whiteboard-section" id="whiteboard">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <div
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200/80 text-xs font-semibold text-brand-amber mb-3">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span class="">At A Glance</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-slate tracking-tight">The UX
+                Whiteboard Canvas</h2>
+            <p class="text-sm text-slate-500 mt-2">Mindset, location mobility, core superpowers, and agile philosophies
+            </p>
+        </div>
+        <!-- Whiteboard Frame -->
+        <div
+            class="relative bg-white rounded-[32px] p-6 sm:p-10 lg:p-12 border-4 border-slate-300/80 shadow-board bg-whiteboard-grid overflow-hidden">
+            <!-- Realistic Whiteboard Wall Brackets & Corner Screws -->
+            <div
+                class="absolute top-3 left-4 w-4 h-4 rounded-full bg-slate-300 border-2 border-slate-400 flex items-center justify-center">
+                <div class="w-1.5 h-0.5 bg-slate-500"></div>
+            </div>
+            <div
+                class="absolute top-3 right-4 w-4 h-4 rounded-full bg-slate-300 border-2 border-slate-400 flex items-center justify-center">
+                <div class="w-1.5 h-0.5 bg-slate-500"></div>
+            </div>
+            <div
+                class="absolute bottom-3 left-4 w-4 h-4 rounded-full bg-slate-300 border-2 border-slate-400 flex items-center justify-center">
+                <div class="w-1.5 h-0.5 bg-slate-500"></div>
+            </div>
+            <div
+                class="absolute bottom-3 right-4 w-4 h-4 rounded-full bg-slate-300 border-2 border-slate-400 flex items-center justify-center">
+                <div class="w-1.5 h-0.5 bg-slate-500"></div>
+            </div>
+            <!-- Top Header Row on Canvas -->
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-slate-100 pb-6 mb-8">
+                <div class="flex items-center gap-3">
+                    <span class="font-handwriting text-2xl sm:text-3xl text-brand-indigo font-bold tracking-wide">
+                        // Bhaskar's Canvas Notes ✏️
+                    </span>
+                    <span class="hidden sm:inline-block font-handwriting text-slate-400 text-lg">“Simplicity is
+                        prerequisite for reliability”</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span
+                        class="text-xs uppercase font-bold px-3 py-1.5 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        Bangalore ➔ Anywhere Worldwide
+                    </span>
+                </div>
+            </div>
+            <!-- Whiteboard Desktop Sticky Notes & Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Sticky Note 1: Identity & Role (Yellow Classic) -->
+                <div
+                    class="relative bg-amber-50 p-6 rounded-2xl shadow-sm border border-amber-200 transform -rotate-1 hover:rotate-0 transition-transform">
+                    <div class="tape absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-5 rotate-1"></div>
+                    <div
+                        class="text-xs font-bold text-amber-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+                        <span class="">Identity &amp; Discipline</span>
+                        <span class="text-base">📌</span>
+                    </div>
+                    <h3 class="font-heading font-extrabold text-base text-slate-900 mb-2">Bhaskar Sai Utla</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed font-body">Associate UX Designer &amp; Design
+                        Systems Architect. Over 4+ years converting messy user journeys into elegant, cohesive software
+                        products.
+                    </p>
+                    <div
+                        class="mt-4 pt-3 border-t border-amber-200 flex items-center gap-2 text-[11px] text-amber-900 font-handwriting font-bold text-sm">
+                        <span class="">#FigmaTokenMaster</span>
+                        <span class="">#SystemArchitect</span>
+                    </div>
+                </div>
+                <!-- Sticky Note 2: Global Relocation (Mint Green) -->
+                <div
+                    class="relative bg-emerald-50 p-6 rounded-2xl shadow-sm border border-emerald-200 transform rotate-1 hover:rotate-0 transition-transform">
+                    <div class="tape absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-5 -rotate-2"></div>
+                    <div
+                        class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+                        <span class="">Mobility &amp; Relocation</span>
+                        <span class="text-base">🌍</span>
+                    </div>
+                    <h3 class="font-heading font-extrabold text-base text-slate-900 mb-2">Ready to Relocate Anywhere
+                    </h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Currently living in Bangalore, India. <strong>100% willing &amp; excited to relocate
+                            globally</strong> (US, Europe, Middle East, APAC) or operate in top-tier hybrid setups.
+                    </p>
+                    <div
+                        class="mt-4 pt-3 border-t border-emerald-200 flex items-center gap-2 text-[11px] text-emerald-900 font-semibold">
+                        <i class="fa-solid fa-passport text-emerald-600"></i> Valid Passport · Immediate Availability
+                    </div>
+                </div>
+                <!-- Sticky Note 3: UX Philosophy (Lavender Purple) -->
+                <div
+                    class="relative bg-indigo-50 p-6 rounded-2xl shadow-sm border border-indigo-200 transform -rotate-1 hover:rotate-0 transition-transform">
+                    <div class="tape absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-5 rotate-2"></div>
+                    <div
+                        class="text-xs font-bold text-indigo-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+                        <span class="">UX Mindset</span>
+                        <span class="text-base">🎯</span>
+                    </div>
+                    <h3 class="font-heading font-extrabold text-base text-slate-900 mb-2">Design Thinking + Lean UX</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        I don't design in an ivory tower. Rapid wireframing, fast feedback loops, continuous prototype
+                        testing, and data-backed metric verification.
+                    </p>
+                    <div
+                        class="mt-4 pt-3 border-t border-indigo-200 text-xs font-handwriting text-indigo-900 text-sm font-bold">
+                        "Measure what matters, iterate with empathy"
+                    </div>
+                </div>
+                <!-- Sticky Note 4: Design Systems (Coral / Amber) -->
+                <div
+                    class="relative bg-orange-50 p-6 rounded-2xl shadow-sm border border-orange-200 transform rotate-1 hover:rotate-0 transition-transform">
+                    <div class="tape absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-5 -rotate-1"></div>
+                    <div
+                        class="text-xs font-bold text-orange-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+                        <span class="">Core Superpower</span>
+                        <span class="text-base">🧩</span>
+                    </div>
+                    <h3 class="font-heading font-extrabold text-base text-slate-900 mb-2">Scalable Design Tokens</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Multi-brand color logic, spacing scales, dynamic typography variables, and strict WCAG AA/AAA
+                        compliance integrated directly with dev codebases.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-orange-200 text-xs text-orange-950 font-semibold">
+                        Cut handoff friction by 30% consistently
+                    </div>
+                </div>
+                <!-- Sticky Note 5: Multilingual & Culture (Blue Soft) -->
+                <div
+                    class="relative bg-sky-50 p-6 rounded-2xl shadow-sm border border-sky-200 transform -rotate-1 hover:rotate-0 transition-transform">
+                    <div class="tape absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-5 rotate-1"></div>
+                    <div
+                        class="text-xs font-bold text-sky-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+                        <span class="">Languages &amp; Culture</span>
+                        <span class="text-base">🌐</span>
+                    </div>
+                    <h3 class="font-heading font-extrabold text-base text-slate-900 mb-2">5 Languages Spoken</h3>
+                    <ul class="text-xs text-slate-700 space-y-1">
+                        <li class=""><strong>English:</strong> Professional Working Proficiency</li>
+                        <li class=""><strong>Telugu:</strong> Native / Bilingual</li>
+                        <li class=""><strong>Kannada, Hindi &amp; Tamil:</strong> Conversational Fluency</li>
+                    </ul>
+                    <div
+                        class="mt-4 pt-3 border-t border-sky-200 text-xs font-handwriting text-sky-950 text-sm font-bold">
+                        Effortless cross-team alignment!
+                    </div>
+                </div>
+                <!-- Sticky Note 6: AI-Empowered Speed (Rose Soft) -->
+                <div
+                    class="relative bg-rose-50 p-6 rounded-2xl shadow-sm border border-rose-200 transform rotate-1 hover:rotate-0 transition-transform">
+                    <div class="tape absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-5 -rotate-2"></div>
+                    <div
+                        class="text-xs font-bold text-rose-800 uppercase tracking-wider mb-2 flex items-center justify-between">
+                        <span class="">Next-Gen Speed</span>
+                        <span class="text-base">⚡</span>
+                    </div>
+                    <h3 class="font-heading font-extrabold text-base text-slate-900 mb-2">AI-Accelerated Workflow</h3>
+                    <p class="text-xs text-slate-700 leading-relaxed">
+                        Leveraging Claude 3.5 Sonnet, ChatGPT-4o, and Figma AI for rapid user interview synthesis,
+                        accessibility audits, and copy ideation.
+                    </p>
+                    <div class="mt-4 pt-3 border-t border-rose-200 text-xs text-rose-950 font-semibold">
+                        Faster discovery, higher execution depth
+                    </div>
+                </div>
+            </div>
+            <!-- Whiteboard Bottom Tray: Markers & Eraser -->
+            <div class="mt-10 pt-4 border-t-2 border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <!-- Marker Tray -->
+                    <div class="bg-slate-200/80 px-4 py-2 rounded-xl flex items-center gap-3 shadow-inner">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-600">Markers</span>
+                        <div class="flex items-center gap-2">
+                            <span class="w-8 h-3 rounded-full bg-indigo-600 shadow-sm" title="Indigo Marker"></span>
+                            <span class="w-8 h-3 rounded-full bg-amber-500 shadow-sm" title="Amber Marker"></span>
+                            <span class="w-8 h-3 rounded-full bg-emerald-500 shadow-sm" title="Emerald Marker"></span>
+                            <span class="w-8 h-3 rounded-full bg-rose-500 shadow-sm" title="Rose Marker"></span>
+                            <span class="w-8 h-3 rounded-full bg-slate-800 shadow-sm" title="Black Marker"></span>
+                        </div>
+                        <!-- Eraser Block -->
+                        <div
+                            class="ml-2 w-10 h-4 bg-slate-700 rounded-sm shadow border border-slate-600 flex items-center justify-center text-[8px] text-slate-300 font-mono">
+                            FELT</div>
+                    </div>
+                </div>
+                <span class="font-handwriting text-lg text-slate-600 font-semibold">Ready to build bold, thoughtful
+                    products together! ✨</span>
+            </div>
+        </div>
+    </section>
+    <!-- END: UX Whiteboard Section -->
+    <!-- BEGIN: Skills, Tools & AI Stack Section -->
+    <section class="py-16 max-w-7xl mx-auto overflow-hidden px-4 sm:px-6 lg:px-8" data-purpose="skills-section"
+        id="skills">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <div
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-xs font-semibold text-brand-indigo mb-3">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="">Capabilities &amp; Stack</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-slate tracking-tight">Skills, Tools
+                &amp; Next-Gen AI</h2>
+            <p class="text-sm text-slate-500 mt-2">Comprehensive design toolkit powered by state-of-the-art AI workflows
+            </p>
+        </div>
+        <!-- Infinite Marquee Row 1: UX Methodologies -->
+        <div class="marquee-container overflow-hidden py-2">
+            <div class="marquee-track-left gap-4 flex">
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-users text-indigo-500"></i> UX Research &amp; User Personas
+                </span>
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-bezier-curve text-indigo-500"></i> Design Systems &amp; Component Kits
+                </span>
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-universal-access text-emerald-600"></i> WCAG AA / AAA Accessibility
+                </span>
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap text-amber-500"></i> Information Architecture &amp; User Flows
+                </span>
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-vial-circle-check text-purple-500"></i> Usability Testing &amp; Heuristics
+                </span>
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-amber-500"></i> Lean UX &amp; Agile Sprints
+                </span>
+                <!-- Duplicates for continuous track -->
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-users text-indigo-500"></i> UX Research &amp; User Personas
+                </span>
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-bezier-curve text-indigo-500"></i> Design Systems &amp; Component Kits
+                </span>
+                <span
+                    class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 shadow-soft-card flex items-center gap-2">
+                    <i class="fa-solid fa-universal-access text-emerald-600"></i> WCAG AA / AAA Accessibility
+                </span>
+            </div>
+        </div>
+        <!-- Infinite Marquee Row 2: Software Proficiency Cards -->
+        <div class="marquee-container overflow-hidden py-3">
+            <div class="marquee-track-right gap-4 flex"><!-- Figma -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-brands fa-figma text-purple-600 text-base"></i> Figma</span>
+                        <span class="text-indigo-600">95%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                <!-- Adobe XD -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-pen-ruler text-pink-600 text-base"></i> Adobe XD</span>
+                        <span class="text-indigo-600">88%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-pink-600 h-2 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+                <!-- Axure RP -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-diagram-project text-blue-600 text-base"></i> Axure RP</span>
+                        <span class="text-indigo-600">80%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                <!-- Photoshop -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-image text-cyan-600 text-base"></i>
+                            Photoshop</span>
+                        <span class="text-indigo-600">92%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-cyan-600 h-2 rounded-full" style="width: 92%"></div>
+                    </div>
+                </div>
+                <!-- Illustrator -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-shapes text-amber-600 text-base"></i> Illustrator</span>
+                        <span class="text-indigo-600">86%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-amber-600 h-2 rounded-full" style="width: 86%"></div>
+                    </div>
+                </div>
+                <!-- DaVinci Resolve -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-film text-rose-500 text-base"></i>
+                            DaVinci Resolve</span>
+                        <span class="text-indigo-600">85%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-rose-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                <!-- Adobe Lightroom -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-sliders text-sky-500 text-base"></i>
+                            Lightroom</span>
+                        <span class="text-indigo-600">90%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-sky-500 h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                <!-- Adobe InDesign -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-book-open text-pink-500 text-base"></i> InDesign</span>
+                        <span class="text-indigo-600">84%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-pink-500 h-2 rounded-full" style="width: 84%"></div>
+                    </div>
+                </div>
+                <!-- Canva -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-palette text-cyan-500 text-base"></i> Canva</span>
+                        <span class="text-indigo-600">94%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-cyan-500 h-2 rounded-full" style="width: 94%"></div>
+                    </div>
+                </div>
+                <!-- Duplicates for seamless infinite marquee loop -->
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-brands fa-figma text-purple-600 text-base"></i> Figma</span>
+                        <span class="text-indigo-600">95%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-indigo-600 h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-pen-ruler text-pink-600 text-base"></i> Adobe XD</span>
+                        <span class="text-indigo-600">88%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-pink-600 h-2 rounded-full" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-diagram-project text-blue-600 text-base"></i> Axure RP</span>
+                        <span class="text-indigo-600">80%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-image text-cyan-600 text-base"></i>
+                            Photoshop</span>
+                        <span class="text-indigo-600">92%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-cyan-600 h-2 rounded-full" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-shapes text-amber-600 text-base"></i> Illustrator</span>
+                        <span class="text-indigo-600">86%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-amber-600 h-2 rounded-full" style="width: 86%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-film text-rose-500 text-base"></i>
+                            DaVinci Resolve</span>
+                        <span class="text-indigo-600">85%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-rose-500 h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i class="fa-solid fa-sliders text-sky-500 text-base"></i>
+                            Lightroom</span>
+                        <span class="text-indigo-600">90%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-sky-500 h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-book-open text-pink-500 text-base"></i> InDesign</span>
+                        <span class="text-indigo-600">84%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-pink-500 h-2 rounded-full" style="width: 84%"></div>
+                    </div>
+                </div>
+                <div
+                    class="w-48 bg-white p-3.5 rounded-2xl border border-slate-200 shadow-soft-card flex flex-col justify-between shrink-0">
+                    <div class="flex items-center justify-between text-xs font-bold text-slate-800 mb-1.5">
+                        <span class="flex items-center gap-2"><i
+                                class="fa-solid fa-palette text-cyan-500 text-base"></i> Canva</span>
+                        <span class="text-indigo-600">94%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div class="bg-cyan-500 h-2 rounded-full" style="width: 94%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Infinite Marquee Row 3: AI Chips (Glowing Neon Style) -->
+        <div class="marquee-container overflow-hidden py-2">
+            <div class="marquee-track-left gap-3 flex"><span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-robot text-amber-400"></i> ChatGPT 4o
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-brain text-brand-indigo"></i> Claude 3.5 Sonnet
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-sparkles text-emerald-400"></i> Figma AI
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Stitch AI
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-atom text-cyan-300"></i> Antigravity
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-brands fa-github text-white"></i> GitHub
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-code text-blue-400"></i> VS Code
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-wand-magic text-pink-400"></i> Gemini Pro
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-code text-cyan-400"></i> GitHub Copilot
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-magnifying-glass-chart text-amber-300"></i> Genspark AI
+                </span>
+                <!-- Duplicates for seamless infinite loop -->
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-robot text-amber-400"></i> ChatGPT 4o
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-brain text-brand-indigo"></i> Claude 3.5 Sonnet
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-sparkles text-emerald-400"></i> Figma AI
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> Stitch AI
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-atom text-cyan-300"></i> Antigravity
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-brands fa-github text-white"></i> GitHub
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-code text-blue-400"></i> VS Code
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-wand-magic text-pink-400"></i> Gemini Pro
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-code text-cyan-400"></i> GitHub Copilot
+                </span>
+                <span
+                    class="px-4 py-2 rounded-xl bg-slate-900 text-indigo-200 border border-indigo-700/50 text-xs font-medium flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-magnifying-glass-chart text-amber-300"></i> Genspark AI
+                </span>
+            </div>
+        </div>
+        <!-- 4-Column Structured Competency Grid for Desktop -->
+        <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div
+                class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 transition-colors">
+                <div
+                    class="w-10 h-10 rounded-xl bg-indigo-50 text-brand-indigo flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                </div>
+                <h3 class="font-heading font-bold text-base text-brand-slate mb-2">Research &amp; Strategy</h3>
+                <p class="text-xs text-slate-500 mb-4 leading-relaxed">Deriving strategic product clarity from raw
+                    qualitative data and behavioral telemetry.</p>
+                <ul class="text-xs text-slate-700 space-y-1.5">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-indigo text-[10px]"></i>
+                        User Interviews &amp; Field Studies</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-indigo text-[10px]"></i>
+                        Affinity Mapping &amp; Personas</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-indigo text-[10px]"></i>
+                        Journey Mapping &amp; Sitemaps</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-indigo text-[10px]"></i>
+                        Heuristic Usability Audits</li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 transition-colors">
+                <div
+                    class="w-10 h-10 rounded-xl bg-amber-50 text-brand-amber flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-cubes"></i>
+                </div>
+                <h3 class="font-heading font-bold text-base text-brand-slate mb-2">UI &amp; Design Systems</h3>
+                <p class="text-xs text-slate-500 mb-4 leading-relaxed">Building industrial-grade component libraries
+                    that empower developers to ship faster.</p>
+                <ul class="text-xs text-slate-700 space-y-1.5">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-amber text-[10px]"></i>
+                        Figma Variables &amp; Tokens</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-amber text-[10px]"></i>
+                        Multi-Theme Dark/Light Modes</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-amber text-[10px]"></i>
+                        WCAG 2.1 AA/AAA Accessibility</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-amber text-[10px]"></i>
+                        Governance &amp; Versioning</li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 transition-colors">
+                <div
+                    class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <h3 class="font-heading font-bold text-base text-brand-slate mb-2">Prototyping &amp; Specs</h3>
+                <p class="text-xs text-slate-500 mb-4 leading-relaxed">High-fidelity interactive states,
+                    micro-interactions, and pristine engineer handoffs.</p>
+                <ul class="text-xs text-slate-700 space-y-1.5">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 text-[10px]"></i>
+                        Complex Conditional Flows</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 text-[10px]"></i>
+                        Micro-animations &amp; Transitions</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 text-[10px]"></i>
+                        Zero-Friction Dev Redlines</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600 text-[10px]"></i>
+                        Usertesting.com Integration</li>
+                </ul>
+            </div>
+            <div
+                class="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 transition-colors">
+                <div
+                    class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg mb-4">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <h3 class="font-heading font-bold text-base text-brand-slate mb-2">AI-Accelerated UX</h3>
+                <p class="text-xs text-slate-500 mb-4 leading-relaxed">Multiplying design velocity with state-of-the-art
+                    synthetic research &amp; code generation.</p>
+                <ul class="text-xs text-slate-700 space-y-1.5">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600 text-[10px]"></i>
+                        LLM Transcript Synthesis</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600 text-[10px]"></i>
+                        Figma AI Auto-layout &amp; Copy</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600 text-[10px]"></i>
+                        Copilot &amp; Tailwind Prototyping</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-600 text-[10px]"></i>
+                        Deep Competitive Analysis</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- END: Skills, Tools & AI Stack Section -->
+    <!-- BEGIN: Selected Work Section (Desktop 2x2 High-Impact Grid) -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-purpose="projects-section" id="projects">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-xs font-semibold text-brand-indigo mb-3">
+                <i class="fa-solid fa-briefcase"></i>
+                <span class="">Featured Case Studies</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-slate tracking-tight">Enterprise
+                &amp; Consumer Platforms</h2>
+            <p class="text-sm text-slate-500 mt-2">Measurable business ROI achieved through empathetic human-centered
+                design</p>
+        </div>
+        <!-- Desktop 2x2 Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Project 1: CARO B2B -->
+            <article
+                class="col-span-1 bg-white rounded-[32px] border-2 border-indigo-200/80 shadow-soft-card overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative"
+                data-purpose="project-card">
+                <div
+                    class="absolute top-4 right-4 z-20 hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500 text-white font-bold text-xs shadow-md tracking-wide">
+                    <i class="fa-solid fa-star text-[11px]"></i> ★ Featured Project
+                </div>
+                <div>
+                    <!-- Visual Card Header with Modern Food UI Mockup -->
+                    <div
+                        class="h-64 sm:h-80 bg-gradient-to-br from-slate-950 via-indigo-950 to-orange-950 p-6 sm:p-10 relative flex flex-col sm:flex-row items-center justify-between text-white overflow-hidden gap-6">
+                        <div
+                            class="absolute -right-10 -bottom-10 w-72 h-72 bg-orange-500/20 rounded-full blur-3xl group-hover:scale-110 transition-transform">
+                        </div>
+                        <div class="absolute left-1/3 -top-10 w-60 h-60 bg-brand-indigo/25 rounded-full blur-3xl"></div>
+                        <div class="z-10 max-w-xl text-left">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-amber-500 text-white font-bold text-[11px] uppercase tracking-wider">Food
+                                    Tech &amp; E-Commerce</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 text-orange-200 font-semibold text-[11px] uppercase tracking-wider backdrop-blur-sm">Consumer
+                                    Web Platform</span>
+                            </div>
+                            <h3
+                                class="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white mt-2 leading-tight">
+                                Savoura — Modern Food Ordering Experience</h3>
+                            <p class="text-xs sm:text-sm text-orange-100/90 mt-2 leading-relaxed">A modern food-ordering
+                                website designed to create a visually engaging and frictionless ordering experience. The
+                                redesign focuses on helping customers discover food faster, understand offers clearly,
+                                and complete orders with fewer steps.</p>
+                        </div>
+                        <!-- Interactive / Sleek Food UI Preview Phone & Floating Offer Card -->
+                        <div
+                            class="relative z-10 shrink-0 flex items-center justify-center w-36 sm:w-48 lg:w-52 h-52 sm:h-64 overflow-hidden rounded-2xl border-2 border-orange-500/40 shadow-2xl bg-slate-900 transform rotate-1 group-hover:rotate-0 transition-transform">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3S2HuuSB-KupVusnSzeRhn_uUmb1OFZUOUR_3uE2pm1ZUueOuk19Uq6hqKahxUU5SpTYl2-ULLX969A4I6aprF7PbV_lQ31365So5GeSJrOWJTD_u3sN8YvrsfCIE1aI9ivMVrR5hRD9NT5_COAMuYFiv6WMj9mADOMaJcrGzY7BakeeR8jHZ_vROkbex8W8KfgP2npZsDwRrlymDwH_fU98YIVDi2AXploZ35vBCBb-2s1dmE1lUOQ"
+                                alt="Savoura Website Interface Preview"
+                                class="w-full h-auto max-h-[360px] object-cover object-top rounded-xl shadow-lg"></div>
+                    </div>
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-8">
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-orange-50 text-orange-600 border border-orange-200">Visual
+                                Discovery</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-50 text-brand-indigo border border-indigo-200">Frictionless
+                                Checkout</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">Offer
+                                Transparency</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200">Conversion
+                                Rate Optimization</span>
+                        </div>
+                        <!-- UX Impact Flow Ribbon -->
+                        <div
+                            class="mb-6 p-3.5 bg-gradient-to-r from-indigo-50 via-orange-50 to-emerald-50 rounded-2xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-slate-700">
+                            <div class="flex items-center gap-1.5 text-brand-indigo"><i
+                                    class="fa-solid fa-compass-drafting"></i> Faster discovery</div>
+                            <i class="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                            <div class="flex items-center gap-1.5 text-amber-600"><i class="fa-solid fa-users"></i>
+                                Better engagement</div>
+                            <i class="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                            <div class="flex items-center gap-1.5 text-orange-600"><i
+                                    class="fa-solid fa-mobile-screen"></i> Easier ordering</div>
+                            <i class="fa-solid fa-arrow-right text-[10px] text-slate-400"></i>
+                            <div class="flex items-center gap-1.5 text-emerald-700"><i
+                                    class="fa-solid fa-chart-line"></i> Higher conversion</div>
+                        </div>
+                        <!-- Summary Statement -->
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6 font-medium">
+                            Savoura transformed from a basic food-ordering interface into a visually engaging digital
+                            food experience focused on discovery and conversion.
+                        </p>
+                        <!-- Quantified Business Impact & Metrics -->
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-100 mb-6 text-center">
+                            <div class="p-2">
+                                <div class="font-heading font-extrabold text-2xl lg:text-3xl text-orange-600">40% ↑
+                                </div>
+                                <div class="font-heading font-bold text-xs text-brand-slate mt-1">Orders</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5 leading-tight">Accelerated order velocity
+                                </div>
+                            </div>
+                            <div class="p-2 border-t sm:border-t-0 sm:border-l sm:border-r border-slate-200">
+                                <div class="font-heading font-extrabold text-2xl lg:text-3xl text-brand-indigo">25% ↑
+                                </div>
+                                <div class="font-heading font-bold text-xs text-brand-slate mt-1">Coverage</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5 leading-tight">Expanded merchant discovery
+                                </div>
+                            </div>
+                            <div class="p-2 border-t sm:border-t-0 border-slate-200">
+                                <div class="font-heading font-extrabold text-2xl lg:text-3xl text-emerald-600">36% ↑
+                                </div>
+                                <div class="font-heading font-bold text-xs text-brand-slate mt-1">Overall Business
+                                    Growth</div>
+                                <div class="text-[11px] text-slate-500 mt-0.5 leading-tight">Measurable e-commerce ROI
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-0">
+                    <button
+                        class="w-full py-4 rounded-xl bg-slate-900 text-white font-heading font-bold text-xs hover:bg-brand-indigo shadow-md transition-colors flex items-center justify-center gap-2"
+                        onclick="openCaseStudy('caro')">
+                        <span class="">Read Case Study Breakdown</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+            <article
+                class="col-span-1 bg-white rounded-[32px] border-2 border-amber-200/80 shadow-soft-card overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative"
+                data-purpose="project-card">
+                <div
+                    class="absolute top-4 right-4 z-20 hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500 text-white font-bold text-xs shadow-md tracking-wide">
+                    <i class="fa-solid fa-star text-[11px]"></i> ★ Featured Project
+                </div>
+                <div>
+                    <div
+                        class="h-64 sm:h-80 bg-gradient-to-br from-amber-900 via-stone-900 to-amber-950 p-6 sm:p-8 relative flex flex-col sm:flex-row items-center justify-between text-white overflow-hidden gap-4">
+                        <div
+                            class="absolute -right-10 -bottom-10 w-72 h-72 bg-amber-500/20 rounded-full blur-3xl group-hover:scale-110 transition-transform">
+                        </div>
+                        <div class="absolute left-1/3 -top-10 w-60 h-60 bg-amber-400/10 rounded-full blur-3xl"></div>
+                        <div class="z-10 max-w-xs text-left">
+                            <div class="flex flex-wrap items-center gap-2 mb-2">
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-amber-500 text-white font-bold text-[11px] uppercase tracking-wider">Luxury
+                                    E-Commerce</span>
+                                <span
+                                    class="px-2.5 py-1 rounded-md bg-white/10 text-amber-200 font-semibold text-[11px] uppercase tracking-wider backdrop-blur-sm">B2C
+                                    Marketplace</span>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-heading font-extrabold text-white mt-2 leading-tight">
+                                Kamsa Jewelleries — Fine Jewellery B2C Marketplace</h3>
+                            <p class="text-xs text-amber-100/90 mt-2 leading-relaxed">A B2C fine jewellery marketplace
+                                connecting customers with verified merchants. Designed for a premium yet minimal
+                                discovery flow featuring curated collections, transparent pricing, hallmarked
+                                certifications, and bespoke atelier appointments.</p>
+                        </div>
+                        <div
+                            class="relative z-10 shrink-0 flex items-center justify-center w-36 sm:w-44 h-52 sm:h-64 overflow-hidden rounded-2xl border-2 border-amber-600/40 shadow-2xl bg-stone-900 transform rotate-1 group-hover:rotate-0 transition-transform">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQyYXcndfUjk5890GqI-HtPvx758sbtfwY0TMI4bXaSPZ_W9K62oXI_hwb_3Tc716iK55iAuSo4L_gkady6mRT5U43dPXBn4ct4GkCfMoC-a79hjhFmBT8V6DnihBxBP5g4t_RtliDQMT7B1oYnnaEjw7OXltZEtO3N4K1GpSwFNJJv8HGt5AxGFJAjkylP5Yu2NJgpNoFKcKh_tOcXuQ4GUZ-BbUlJp78F0flKX43lyiAg_kBP-VmfA"
+                                alt="Kamsa Jewelleries App Screenshot"
+                                class="w-full h-auto max-h-[360px] object-cover object-top rounded-xl shadow-lg border border-amber-900/20">
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">Curated
+                                Categories</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">GIA
+                                &amp; Hallmark Certified</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-50 text-brand-indigo border border-indigo-200">Transparent
+                                Pricing</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-purple-50 text-purple-700 border border-purple-200">Gemmologist
+                                Consultations</span>
+                        </div>
+                        <div
+                            class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-6 text-center">
+                            <div class="p-1.5">
+                                <div class="font-heading font-extrabold text-lg lg:text-xl text-amber-600">100%</div>
+                                <div class="font-heading font-bold text-xs text-brand-slate mt-0.5">Certified Stones
+                                </div>
+                                <div class="text-[10px] text-slate-500 mt-0.5 leading-tight">BIS Hallmark &amp; GIA
+                                </div>
+                            </div>
+                            <div class="p-1.5 border-t sm:border-t-0 sm:border-l sm:border-r border-slate-200">
+                                <div class="font-heading font-extrabold text-lg lg:text-xl text-emerald-600">3.2x</div>
+                                <div class="font-heading font-bold text-xs text-brand-slate mt-0.5">Consultation Uplift
+                                </div>
+                                <div class="text-[10px] text-slate-500 mt-0.5 leading-tight">Salon sessions booked</div>
+                            </div>
+                            <div class="p-1.5 border-t sm:border-t-0 border-slate-200">
+                                <div class="font-heading font-extrabold text-lg lg:text-xl text-brand-indigo">42% ↑
+                                </div>
+                                <div class="font-heading font-bold text-xs text-brand-slate mt-0.5">Search-to-Shortlist
+                                </div>
+                                <div class="text-[10px] text-slate-500 mt-0.5 leading-tight">Refined carat discovery
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-0">
+                    <button
+                        class="w-full py-4 rounded-xl bg-slate-900 text-white font-heading font-bold text-xs hover:bg-brand-indigo shadow-md transition-colors flex items-center justify-center gap-2"
+                        onclick="openCaseStudy('caro')">
+                        <span class="">Read Case Study Breakdown</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+            <article
+                class="bg-white rounded-[32px] border border-slate-200 shadow-soft-card overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                data-purpose="project-card">
+                <div>
+                    <!-- Visual Card Header -->
+                    <div
+                        class="h-60 bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-900 p-6 sm:p-8 relative flex items-center justify-between text-white overflow-hidden">
+                        <div
+                            class="absolute -right-10 -bottom-10 w-52 h-52 bg-brand-indigo/30 rounded-full blur-2xl group-hover:scale-110 transition-transform">
+                        </div>
+                        <div class="z-10 max-w-xs">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-brand-amber text-white font-bold text-[11px] uppercase tracking-wider">B2B
+                                Mobility Platform</span>
+                            <h3 class="text-2xl font-heading font-bold text-white mt-2 leading-tight">CARO — Used Car
+                                Wholesale Trading</h3>
+                            <p class="text-xs text-indigo-200 mt-1">Multi-point appraisal portal &amp; real-time bidding
+                                room</p>
+                        </div>
+                        <!-- Stylized Phone UI Preview -->
+                        <div
+                            class="w-32 h-48 bg-slate-800 rounded-2xl border-2 border-slate-600 shadow-2xl p-2 flex flex-col justify-between shrink-0 transform rotate-2 group-hover:rotate-0 transition-transform">
+                            <div class="flex items-center justify-between border-b border-slate-700 pb-1">
+                                <span class="w-4 h-1.5 bg-amber-400 rounded-full"></span>
+                                <span class="text-[9px] text-slate-300 font-mono">CARO B2B</span>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div
+                                    class="w-full h-4 bg-indigo-500/40 rounded flex items-center px-1 text-[8px] text-indigo-200">
+                                    Toyota Innova '21</div>
+                                <div class="w-3/4 h-2.5 bg-slate-600 rounded"></div>
+                                <div
+                                    class="w-full h-12 bg-slate-700/80 rounded flex flex-col items-center justify-center text-[9px] text-amber-300 font-bold">
+                                    <span class="">Live Bid</span>
+                                    <span class="text-xs text-white">₹14,50,000</span>
+                                </div>
+                            </div>
+                            <div class="w-full py-1 bg-emerald-500 rounded text-[8px] text-center font-bold text-white">
+                                Accept Deal</div>
+                        </div>
+                    </div>
+                    <!-- Card Content -->
+                    <div class="p-6 sm:p-8">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-50 text-brand-indigo">User
+                                Research</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Affinity
+                                Mapping</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Mobile
+                                Prototype</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">Bangalore
+                                Field Pilot</span>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Overhauled an intricate 40-parameter physical inspection checklist into a rapid 3-tap
+                            grading system on mobile. Reduced inventory appraisal time from 45 to 28 minutes.
+                        </p>
+                        <!-- Impact Metrics -->
+                        <div
+                            class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-6 text-center">
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-brand-indigo">38% Faster</div>
+                                <div class="text-xs text-slate-500">Inspection Turnaround</div>
+                            </div>
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-emerald-600">4.8 / 5.0</div>
+                                <div class="text-xs text-slate-500">Dealer CSAT Score</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-0">
+                    <button
+                        class="w-full py-3.5 rounded-xl bg-slate-900 text-white font-heading font-bold text-xs hover:bg-brand-indigo shadow-md transition-colors flex items-center justify-center gap-2"
+                        onclick="openCaseStudy('caro')">
+                        <span class="">Read Case Study Breakdown</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+            <!-- Project 2: Swiggy Multi-Order -->
+            <article
+                class="bg-white rounded-[32px] border border-slate-200 shadow-soft-card overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                data-purpose="project-card">
+                <div>
+                    <!-- Visual Card Header -->
+                    <div
+                        class="h-60 bg-gradient-to-br from-amber-600 via-orange-600 to-slate-950 p-6 sm:p-8 relative flex items-center justify-between text-white overflow-hidden">
+                        <div
+                            class="absolute -right-10 -bottom-10 w-52 h-52 bg-white/20 rounded-full blur-2xl group-hover:scale-110 transition-transform">
+                        </div>
+                        <div class="z-10 max-w-xs">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-white text-orange-600 font-bold text-[11px] uppercase tracking-wider">Concept
+                                Redesign</span>
+                            <h3 class="text-2xl font-heading font-bold text-white mt-2 leading-tight">Swiggy Multi-Order
+                                Single Pay</h3>
+                            <p class="text-xs text-orange-100 mt-1">Unified multi-merchant checkout &amp; synchronized
+                                courier tracking</p>
+                        </div>
+                        <!-- Stylized Phone UI Preview -->
+                        <div
+                            class="w-32 h-48 bg-slate-800 rounded-2xl border-2 border-slate-600 shadow-2xl p-2 flex flex-col justify-between shrink-0 transform -rotate-2 group-hover:rotate-0 transition-transform">
+                            <div class="flex items-center justify-between border-b border-slate-700 pb-1">
+                                <span class="text-[9px] text-orange-400 font-bold">🍔 + ☕ Bundle</span>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div class="w-full h-5 bg-orange-500/30 rounded p-1 text-[8px] text-orange-200">Burger
+                                    Joint: ₹340</div>
+                                <div class="w-full h-5 bg-orange-500/30 rounded p-1 text-[8px] text-orange-200">
+                                    Starbucks: ₹280</div>
+                                <div
+                                    class="w-full h-6 bg-slate-700 rounded flex items-center justify-center text-[8px] text-slate-300">
+                                    Total: ₹620</div>
+                            </div>
+                            <div class="w-full py-1 bg-orange-500 rounded text-[8px] text-center font-bold text-white">
+                                Unified Swipe Pay</div>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-orange-50 text-orange-600">Lean
+                                UX</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Checkout
+                                Conversion</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Information
+                                Architecture</span>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-purple-50 text-purple-700">A/B
+                                Prototyping</span>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Researched friction in group food ordering where separate deliveries forced awkward repeated
+                            checkouts. Formulated a split-delivery single swipe flow that eliminated cart abandonment.
+                        </p>
+                        <!-- Impact Metrics -->
+                        <div
+                            class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-6 text-center">
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-brand-amber">-24%</div>
+                                <div class="text-xs text-slate-500">Cart Drop-off Rate</div>
+                            </div>
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-brand-indigo">2.1x</div>
+                                <div class="text-xs text-slate-500">Average Basket Size</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-0">
+                    <button
+                        class="w-full py-3.5 rounded-xl bg-slate-900 text-white font-heading font-bold text-xs hover:bg-brand-indigo shadow-md transition-colors flex items-center justify-center gap-2"
+                        onclick="openCaseStudy('swiggy')">
+                        <span class="">Read Case Study Breakdown</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+            <!-- Project 3: SkillBridge EdTech SaaS -->
+            <article
+                class="bg-white rounded-[32px] border border-slate-200 shadow-soft-card overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                data-purpose="project-card">
+                <div>
+                    <div
+                        class="h-60 bg-gradient-to-br from-emerald-900 via-teal-950 to-slate-900 p-6 sm:p-8 relative flex items-center justify-between text-white overflow-hidden">
+                        <div
+                            class="absolute -right-10 -bottom-10 w-52 h-52 bg-emerald-500/20 rounded-full blur-2xl group-hover:scale-110 transition-transform">
+                        </div>
+                        <div class="z-10 max-w-xs">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-emerald-400 text-emerald-950 font-bold text-[11px] uppercase tracking-wider">EdTech
+                                SaaS &amp; Web</span>
+                            <h3 class="text-2xl font-heading font-bold text-white mt-2 leading-tight">SkillBridge —
+                                Mentorship Ecosystem</h3>
+                            <p class="text-xs text-emerald-200 mt-1">Accessible 1:1 mentor booking &amp; curriculum
+                                tracker</p>
+                        </div>
+                        <!-- Stylized Phone UI Preview -->
+                        <div
+                            class="w-32 h-48 bg-slate-800 rounded-2xl border-2 border-slate-600 shadow-2xl p-2 flex flex-col justify-between shrink-0 transform rotate-1 group-hover:rotate-0 transition-transform">
+                            <div class="flex items-center justify-between border-b border-slate-700 pb-1">
+                                <span class="text-[9px] text-emerald-400 font-bold">1:1 Critique</span>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div class="w-full h-8 bg-emerald-500/20 rounded p-1 text-[8px] text-emerald-300">Senior
+                                    UX Lead Review</div>
+                                <div
+                                    class="w-full h-3 bg-slate-700 rounded text-[7px] text-slate-400 flex items-center px-1">
+                                    Tomorrow · 6 PM</div>
+                            </div>
+                            <div class="w-full py-1 bg-emerald-500 rounded text-[8px] text-center font-bold text-white">
+                                Confirm Slot</div>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-50 text-emerald-700">EdTech</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Design
+                                System</span>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">WCAG
+                                AA Compliance</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-50 text-brand-indigo">Screen
+                                Reader Tested</span>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Connected tier-2 college design candidates with tier-1 mentors. Designed fully accessible
+                            interfaces adhering strictly to WCAG AA, high contrast palettes, and intuitive screen reader
+                            navigation.
+                        </p>
+                        <div
+                            class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-6 text-center">
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-emerald-600">100% WCAG AA</div>
+                                <div class="text-xs text-slate-500">Accessibility Score</div>
+                            </div>
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-brand-indigo">92%</div>
+                                <div class="text-xs text-slate-500">Session Booking Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-0">
+                    <button
+                        class="w-full py-3.5 rounded-xl bg-slate-900 text-white font-heading font-bold text-xs hover:bg-brand-indigo shadow-md transition-colors flex items-center justify-center gap-2"
+                        onclick="openCaseStudy('skillbridge')">
+                        <span class="">Read Case Study Breakdown</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+            <!-- Project 4: Food Safety Guard Enterprise -->
+            <article
+                class="bg-white rounded-[32px] border border-slate-200 shadow-soft-card overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                data-purpose="project-card">
+                <div>
+                    <div
+                        class="h-60 bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 p-6 sm:p-8 relative flex items-center justify-between text-white overflow-hidden">
+                        <div
+                            class="absolute -right-10 -bottom-10 w-52 h-52 bg-blue-500/20 rounded-full blur-2xl group-hover:scale-110 transition-transform">
+                        </div>
+                        <div class="z-10 max-w-xs">
+                            <span
+                                class="px-2.5 py-1 rounded-md bg-blue-600 text-white font-bold text-[11px] uppercase tracking-wider">Enterprise
+                                B2B SaaS</span>
+                            <h3 class="text-2xl font-heading font-bold text-white mt-2 leading-tight">Food Safety Guard
+                                — QA Portal</h3>
+                            <p class="text-xs text-indigo-200 mt-1">Hazard analysis and real-time vendor audit tracker
+                            </p>
+                        </div>
+                        <!-- Stylized Tablet UI Preview -->
+                        <div
+                            class="w-36 h-48 bg-slate-800 rounded-2xl border-2 border-slate-600 shadow-2xl p-2 flex flex-col justify-between shrink-0 transform -rotate-1 group-hover:rotate-0 transition-transform">
+                            <div class="flex items-center justify-between border-b border-slate-700 pb-1">
+                                <span class="text-[9px] text-indigo-300 font-bold">QA Realtime</span>
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            </div>
+                            <div class="space-y-1.5">
+                                <div
+                                    class="w-full h-5 bg-emerald-500/30 rounded text-[8px] text-emerald-300 flex items-center px-1">
+                                    Batch 8941: Passed (99.4%)</div>
+                                <div
+                                    class="w-full h-5 bg-amber-500/30 rounded text-[8px] text-amber-300 flex items-center px-1">
+                                    Storage Temp Alert (±1.5°)</div>
+                            </div>
+                            <div class="w-full py-1 bg-blue-600 rounded text-[8px] text-center font-bold text-white">
+                                Export ISO Report</div>
+                        </div>
+                    </div>
+                    <div class="p-6 sm:p-8">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-50 text-blue-700">Enterprise
+                                UX</span>
+                            <span
+                                class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Information
+                                Arch.</span>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 text-slate-600">Data
+                                Visualization</span>
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-50 text-amber-700">Error
+                                Prevention</span>
+                        </div>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Transformed slow manual Excel audit files into an interactive responsive tablet &amp; web
+                            dashboard for food supply chains. Slashed incident reporting time by nearly half.
+                        </p>
+                        <div
+                            class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-6 text-center">
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-brand-indigo">15+ Points</div>
+                                <div class="text-xs text-slate-500">Friction Removed</div>
+                            </div>
+                            <div>
+                                <div class="font-heading font-extrabold text-xl text-emerald-600">45% Faster</div>
+                                <div class="text-xs text-slate-500">Audit Turnaround</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 pb-6 sm:px-8 sm:pb-8 pt-0">
+                    <button
+                        class="w-full py-3.5 rounded-xl bg-slate-900 text-white font-heading font-bold text-xs hover:bg-brand-indigo shadow-md transition-colors flex items-center justify-center gap-2"
+                        onclick="openCaseStudy('foodsafety')">
+                        <span class="">Read Case Study Breakdown</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- END: Selected Work Section -->
+    <!-- BEGIN: Interactive Case Study Modal -->
+    <div aria-hidden="true" aria-modal="true"
+        class="fixed inset-0 z-50 hidden overflow-y-auto bg-slate-900/70 backdrop-blur-md p-4 sm:p-6 lg:p-8 flex items-center justify-center"
+        id="caseStudyModal" role="dialog">
+        <div
+            class="relative bg-white w-full max-w-2xl rounded-[32px] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col animate-scaleUp">
+            <div
+                class="sticky top-0 bg-white/95 backdrop-blur-md px-6 sm:px-8 py-5 border-b border-slate-100 flex items-center justify-between z-10">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-indigo" id="modalCategory">Case
+                        Study</span>
+                    <h3 class="font-heading font-extrabold text-xl text-brand-slate leading-tight mt-0.5"
+                        id="modalTitle">Project Title</h3>
+                </div>
+                <button aria-label="Close Case Study"
+                    class="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors"
+                    onclick="closeCaseStudy()">
+                    <i class="fa-solid fa-xmark text-base"></i>
+                </button>
+            </div>
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-slate-600 leading-relaxed" id="modalContent">
+            </div>
+            <div class="sticky bottom-0 bg-slate-50 px-6 sm:px-8 py-4 border-t border-slate-100 flex justify-end gap-3">
+                <button
+                    class="px-6 py-2.5 rounded-xl bg-slate-900 text-white font-heading font-bold text-xs hover:bg-brand-indigo transition-colors"
+                    onclick="closeCaseStudy()">
+                    Close Overview
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- END: Interactive Case Study Modal -->
+    <!-- BEGIN: Work Experience & Education (Desktop Two-Column Split Layout) -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-purpose="experience-timeline" id="experience">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-xs font-semibold text-emerald-700 mb-3">
+                <i class="fa-solid fa-briefcase"></i>
+                <span class="">Career &amp; Academic Milestones</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-slate tracking-tight">Experience
+                &amp; Education</h2>
+            <p class="text-sm text-slate-500 mt-2">Over 4+ years of hands-on digital craft and design systems leadership
+            </p>
+        </div>
+        <!-- Desktop Two-Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <!-- Left Column: Work Experience Timeline (7 Cols) -->
+            <div class="lg:col-span-7">
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-9 h-9 rounded-xl bg-brand-indigo text-white flex items-center justify-center text-sm shadow-sm">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-extrabold text-brand-slate">Work Experience</h3>
+                </div>
+                <div class="relative pl-7 border-l-2 border-indigo-200 ml-4 space-y-8">
+                    <!-- Job 1: Tech Mahindra -->
+                    <div class="relative group" data-purpose="timeline-item">
+                        <div
+                            class="absolute -left-[37px] top-1.5 w-5 h-5 rounded-full bg-brand-indigo border-4 border-white shadow-md">
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft-card hover:border-indigo-300 transition-colors">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="text-xs font-bold text-brand-indigo uppercase tracking-wider">Aug 2021 —
+                                    Aug 2025</span>
+                                <span class="px-3 py-1 rounded-full bg-indigo-50 text-brand-indigo text-xs font-bold">4
+                                    Years</span>
+                            </div>
+                            <h4 class="font-heading font-extrabold text-lg text-brand-slate">UX Designer</h4>
+                            <div class="text-xs font-semibold text-slate-500 mb-4 flex items-center gap-1.5">
+                                <span class="">Tech Mahindra</span>
+                                <span class="">·</span>
+                                <span class="">Bangalore, India</span>
+                            </div>
+                            <ul
+                                class="space-y-2.5 text-xs sm:text-sm text-slate-600 list-disc list-inside leading-relaxed">
+                                <li class="">Architected and scaled centralized <strong class="text-slate-800">Figma
+                                        Design System</strong> tokens and responsive component kits, reducing frontend
+                                    developer handoff time by <strong class="text-brand-indigo">30%</strong>.</li>
+                                <li class="">Presented design concepts, interactive prototypes, and UX strategies to
+                                    <strong class="text-slate-800">C-suite leaders and stakeholders</strong> across 4
+                                    high-value platforms.</li>
+                                <li class="">Conducted rigorous <strong class="text-slate-800">heuristic evaluations
+                                        &amp; WCAG AA audits</strong>, diagnosing 15+ critical friction points and
+                                    elevating user task completion by <strong class="text-emerald-600">20%</strong>.
+                                </li>
+                                <li class="">Mentored junior visual designers and spearheaded accessibility-first
+                                    documentation across cross-functional agile teams.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Job 2: Omnion Premedia -->
+                    <div class="relative group" data-purpose="timeline-item">
+                        <div
+                            class="absolute -left-[37px] top-1.5 w-5 h-5 rounded-full bg-amber-500 border-4 border-white shadow-md">
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-3xl border border-slate-200 shadow-soft-card hover:border-amber-300 transition-colors">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">May 2018 — Jul
+                                    2021</span>
+                                <span class="px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold">3+
+                                    Years</span>
+                            </div>
+                            <h4 class="font-heading font-extrabold text-lg text-brand-slate">Image Editor &amp; Junior
+                                Editor</h4>
+                            <div class="text-xs font-semibold text-slate-500 mb-4 flex items-center gap-1.5">
+                                <span class="">Omnion Premedia</span>
+                                <span class="">·</span>
+                                <span class="">Bangalore, India</span>
+                            </div>
+                            <ul
+                                class="space-y-2.5 text-xs sm:text-sm text-slate-600 list-disc list-inside leading-relaxed">
+                                <li class="">Maintained an exceptional <strong class="text-slate-800">96.8% quality
+                                        benchmark</strong> while delivering 500+ commercial graphics weekly for global
+                                    enterprise accounts like <strong class="text-slate-800">Nike &amp; Fender</strong>.
+                                </li>
+                                <li class="">Honed deep pixel-level precision, composition, color theory, and visual
+                                    balance that now powers my design systems work.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Education & Credentials (5 Cols) -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div
+                            class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-sm shadow-sm">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-extrabold text-brand-slate">Education &amp; Credentials
+                        </h3>
+                    </div>
+                    <div class="space-y-4">
+                        <!-- GITAM University -->
+                        <div
+                            class="bg-white p-5 rounded-3xl border border-slate-200 shadow-soft-card flex items-start justify-between gap-4 hover:border-emerald-300 transition-colors">
+                            <div class="flex items-start gap-3.5">
+                                <div
+                                    class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-base shrink-0 font-bold">
+                                    GU
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-extrabold text-sm text-brand-slate">GITAM University
+                                    </h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5">Bachelor's Degree</p>
+                                    <p class="text-[11px] text-slate-400 mt-1">Foundation in Engineering &amp; Computing
+                                    </p>
+                                </div>
+                            </div>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold shrink-0">GPA
+                                8.68</span>
+                        </div>
+                        <!-- Deviseema Polytechnic -->
+                        <div
+                            class="bg-white p-5 rounded-3xl border border-slate-200 shadow-soft-card flex items-start justify-between gap-4 hover:border-emerald-300 transition-colors">
+                            <div class="flex items-start gap-3.5">
+                                <div
+                                    class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-base shrink-0 font-bold">
+                                    DP
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-extrabold text-sm text-brand-slate">Deviseema
+                                        Polytechnic</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5">Diploma Studies</p>
+                                    <p class="text-[11px] text-slate-400 mt-1">Technical &amp; Graphic Foundations</p>
+                                </div>
+                            </div>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold shrink-0">GPA
+                                7.8</span>
+                        </div>
+                        <!-- Certifications -->
+                        <div
+                            class="bg-white p-5 rounded-3xl border border-slate-200 shadow-soft-card flex items-start justify-between gap-4 hover:border-indigo-300 transition-colors">
+                            <div class="flex items-start gap-3.5">
+                                <div
+                                    class="w-10 h-10 rounded-2xl bg-indigo-50 text-brand-indigo flex items-center justify-center text-base shrink-0">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-heading font-extrabold text-sm text-brand-slate">MyCaptain UI/UX
+                                        &amp; Arena Animation</h4>
+                                    <p class="text-xs text-slate-600 font-medium mt-0.5">Design Thinking &amp; Digital
+                                        Graphics</p>
+                                    <p class="text-[11px] text-slate-400 mt-1">End-to-End User Experience Certification
+                                    </p>
+                                </div>
+                            </div>
+                            <span
+                                class="px-2.5 py-1 rounded-full bg-indigo-50 text-brand-indigo text-xs font-bold shrink-0">Certified</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Relocation Mobility Card in Education column -->
+                <div
+                    class="mt-6 bg-gradient-to-br from-indigo-900 to-slate-900 p-6 rounded-3xl text-white shadow-soft-card">
+                    <div
+                        class="flex items-center gap-2 text-brand-amber text-xs font-bold uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-plane-departure"></i>
+                        <span class="">Global Mobility Guarantee</span>
+                    </div>
+                    <p class="text-xs text-indigo-100 leading-relaxed">
+                        I am fully prepared for international relocation or nationwide enterprise relocations with
+                        minimal lead time.
+                    </p>
+                    <div class="mt-4 flex items-center gap-4 text-xs font-semibold text-white">
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-emerald-400"></i> No Visa Constraints</span>
+                        <span class="flex items-center gap-1.5"><i
+                                class="fa-solid fa-circle-check text-emerald-400"></i> Quick Notice</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Work Experience & Education -->
+    <!-- BEGIN: Testimonials / Recommendations (Desktop 3-Column Grid) -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-purpose="testimonials-section" id="testimonials">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200/80 text-xs font-semibold text-brand-amber mb-3">
+                <i class="fa-solid fa-quote-left"></i>
+                <span class="">Social Proof</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-slate tracking-tight">Peer &amp;
+                Leadership Endorsements</h2>
+            <p class="text-sm text-slate-500 mt-2">What engineering leads, product managers, and directors say about
+                collaborating</p>
+        </div>
+        <!-- Multi-Column Desktop Grid for Recommendations -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Testimonial 1 -->
+            <div
+                class="bg-white p-6 sm:p-8 rounded-[32px] border border-slate-200 shadow-soft-card flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+                <div>
+                    <div class="flex text-amber-400 text-sm gap-1 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-slate-700 italic leading-relaxed mb-6 font-body">
+                        "Bhaskar's ability to take complicated business logic and convert it into clean, high-fidelity
+                        prototypes in Figma made our dev handoff completely frictionless. His eye for accessibility
+                        standards is second to none."
+                    </p>
+                </div>
+                <div class="flex items-center gap-3.5 pt-4 border-t border-slate-100">
+                    <div
+                        class="w-10 h-10 rounded-full bg-indigo-100 text-brand-indigo flex items-center justify-center font-extrabold text-sm shadow-sm">
+                        AK
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm text-brand-slate">Harish Anand</div>
+                        <div class="text-xs text-slate-400">Lead Product Manager · Enterprise SaaS</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div
+                class="bg-white p-6 sm:p-8 rounded-[32px] border border-slate-200 shadow-soft-card flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+                <div>
+                    <div class="flex text-amber-400 text-sm gap-1 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-slate-700 italic leading-relaxed mb-6 font-body">
+                        "Rarely do you find a UX designer who respects design token architecture as deeply as Bhaskar.
+                        Our engineers loved building off his clean Figma components. He's also a joyful collaborator in
+                        sprint planning."
+                    </p>
+                </div>
+                <div class="flex items-center gap-3.5 pt-4 border-t border-slate-100">
+                    <div
+                        class="w-10 h-10 rounded-full bg-amber-100 text-brand-amber flex items-center justify-center font-extrabold text-sm shadow-sm">
+                        SR
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm text-brand-slate">Vijayan</div>
+                        <div class="text-xs text-slate-400">Engineering Manager · Tech Mahindra</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div
+                class="bg-white p-6 sm:p-8 rounded-[32px] border border-slate-200 shadow-soft-card flex flex-col justify-between hover:shadow-lg transition-all duration-300 md:col-span-2 lg:col-span-1">
+                <div>
+                    <div class="flex text-amber-400 text-sm gap-1 mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-sm text-slate-700 italic leading-relaxed mb-6 font-body">
+                        "Bhaskar's heuristic audit discovered friction we had missed for months. His revamp improved our
+                        user task success rate by 20%. Any team relocating him will gain an absolute design powerhouse."
+                    </p>
+                </div>
+                <div class="flex items-center gap-3.5 pt-4 border-t border-slate-100">
+                    <div
+                        class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-extrabold text-sm shadow-sm">
+                        RM
+                    </div>
+                    <div>
+                        <div class="font-heading font-bold text-sm text-brand-slate">Vinay</div>
+                        <div class="text-xs text-slate-400">Design Director · Digital Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: Testimonials Section -->
+    <!-- BEGIN: About & Interactive Contact (Desktop Spacious Two-Column Layout) -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-purpose="clients-brands-section" id="clients">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-xs font-semibold text-brand-indigo mb-3">
+                <i class="fa-solid fa-briefcase"></i><span class="">Global Brand Collaborations</span></div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-slate tracking-tight">Brands &amp;
+                Clients I've Designed &amp; Engineered For</h2>
+            <p class="text-sm text-slate-500 mt-2">High-impact visual design, digital assets, and scalable design system
+                implementations for world-renowned enterprises and luxury icons.</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-heading font-extrabold text-sm tracking-widest shadow-sm group-hover:scale-105 transition-transform">
+                        S</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200/80">Auction
+                        &amp; Art</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Sotheby's</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Fine art, collectibles &amp; luxury auction platforms</p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center font-heading font-black text-sm tracking-wider shadow-sm group-hover:scale-105 transition-transform">
+                        NIKE</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-brand-indigo bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-200/80">Athletic
+                        &amp; Apparel</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Nike</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">High-velocity digital assets &amp; premium commercial
+                        graphics</p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-amber-900 text-amber-100 flex items-center justify-center font-heading font-bold text-base shadow-sm group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-bolt"></i></div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-rose-800 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">Musical
+                        Gear</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Fender</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Iconic electric guitars, audio amps &amp; lifestyle visuals
+                    </p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-800 text-white flex items-center justify-center font-heading font-bold text-sm tracking-wider shadow-sm group-hover:scale-105 transition-transform">
+                        SIG</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200">Fine
+                        Jewelry</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Signet Jewelers</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">World's largest retailer of diamond fine jewelry</p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-900 text-amber-300 flex items-center justify-center font-heading font-bold text-base shadow-sm group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-award"></i></div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">Diamonds</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Zales</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">The diamond store fine jewelry &amp; bridal digital
+                        collections</p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-pink-600 text-white flex items-center justify-center font-heading font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                        BB</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-pink-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-200">Beauty
+                        &amp; Care</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Birchbox</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Pioneering monthly beauty discovery subscription box</p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-heading font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                        ★</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-slate-700 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200">Streetwear</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Converse All Star</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Timeless Chuck Taylor heritage streetwear &amp; footwear
+                    </p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-heading font-extrabold text-xs tracking-wider shadow-sm group-hover:scale-105 transition-transform">
+                        KEEN</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Outdoor
+                        Gear</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Keen Footwear</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Performance hybrid outdoor footwear &amp; adventure wear
+                    </p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-heading font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                        RTR</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-indigo-800 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-200">Fashion
+                        Tech</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Rent the Runway</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Designer wardrobe subscription &amp; circular fashion
+                        rental</p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-stone-900 text-amber-400 flex items-center justify-center font-heading font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-star"></i></div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-amber-900 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">Luxury
+                        Confections</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Godiva</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Belgian heritage luxury chocolatiers &amp; gifting
+                        experience</p>
+                </div>
+            </div>
+            <div
+                class="col-span-1 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-5 rounded-2xl border border-slate-700 shadow-soft-card hover:border-indigo-500 transition-all flex flex-col justify-between group text-white">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center font-heading font-black text-base shadow-sm group-hover:scale-105 transition-transform">
+                        🎮</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/20 px-2.5 py-0.5 rounded-full border border-emerald-500/30">Gaming
+                        &amp; Entertainment</span>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h3 class="font-heading font-extrabold text-base text-white">Xbox</h3><span
+                            class="text-[11px] text-slate-400 font-semibold">/ Microsoft</span>
+                    </div>
+                    <p class="text-xs text-slate-300 mt-0.5">Console, cloud gaming ecosystems &amp; cross-platform
+                        interactive experiences</p>
+                </div>
+            </div>
+            <div
+                class="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-soft-card hover:border-indigo-300 hover:shadow-md transition-all flex flex-col justify-between group">
+                <div class="flex items-center justify-between mb-4">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center font-heading font-extrabold text-sm tracking-wider shadow-sm group-hover:scale-105 transition-transform">
+                        AJIO</div><span
+                        class="text-[10px] font-bold uppercase tracking-wider text-brand-indigo bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-200/80">Fashion
+                        &amp; E-Commerce</span>
+                </div>
+                <div>
+                    <h3 class="font-heading font-extrabold text-base text-brand-slate">Ajio</h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Leading digital fashion, streetwear &amp; lifestyle
+                        e-commerce platform</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" data-purpose="contact-section" id="contact">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-amber/10 border border-brand-amber/30 text-xs font-semibold text-brand-amber mb-3">
+                <i class="fa-solid fa-handshake"></i>
+                <span class="">Let's Build Great Things</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-brand-slate tracking-tight">About &amp; Get
+                In Touch</h2>
+            <p class="text-sm text-slate-500 mt-2">Currently open for full-time Senior UX Designer roles with worldwide
+                relocation support</p>
+        </div>
+        <!-- Desktop Two-Column Split Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Left Column: Deep Bio & Coordinates (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                <div class="bg-white p-6 sm:p-8 rounded-[32px] border border-slate-200 shadow-soft-card">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div
+                            class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-indigo to-indigo-600 flex items-center justify-center text-white text-xl font-heading font-extrabold shadow-md shadow-indigo-500/25 shrink-0">
+                            BU
+                        </div>
+                        <div>
+                            <h3 class="font-heading font-extrabold text-lg text-brand-slate">Bhaskar Sai Utla</h3>
+                            <span class="text-xs text-brand-indigo font-semibold">Bangalore ➔ Open Worldwide
+                                Relocation</span>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                        My career began in the unforgiving world of high-velocity visual Designing and editing for
+                        global brands like <strong class="text-slate-800">Nike and Fender</strong>, where pixel
+                        precision and rapid turnaround were paramount.
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                        Over the past 4+ years at Tech Mahindra, I translated that craft into architecting
+                        multi-platform design systems, building accessible digital workflows, and leading end-to-end
+                        user research across complex B2B and consumer web apps.
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        I'm currently seeking a high-impact Senior UX Designer or Design Systems Lead role with teams
+                        passionate about product quality, user empathy, and rapid shipping.
+                    </p>
+                    <!-- Direct Coordinates -->
+                    <div class="mt-6 pt-6 border-t border-slate-100 space-y-3.5 text-xs sm:text-sm">
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-indigo-50 text-brand-indigo flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-[11px] text-slate-400">Direct Phone</div>
+                                <a class="font-semibold text-slate-800 hover:text-brand-indigo hover:underline"
+                                    href="tel:+917013197658">+91 7013197658</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-indigo-50 text-brand-indigo flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-[11px] text-slate-400">Work &amp; Personal Email</div>
+                                <a class="font-semibold text-slate-800 hover:text-brand-indigo hover:underline"
+                                    href="mailto:Bhaskarsai.utla@gmail.com">Bhaskarsai.utla@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 text-slate-700">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-amber-50 text-brand-amber flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-[11px] text-slate-400">Location Base</div>
+                                <span class="font-semibold text-slate-800">Bangalore, India (Ready to Relocate
+                                    Worldwide)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Social Media Pills -->
+                    <div class="mt-6 pt-5 border-t border-slate-100 flex items-center gap-2.5">
+                        <a aria-label="LinkedIn Profile"
+                            class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 hover:text-brand-indigo hover:border-brand-indigo text-xs font-semibold flex items-center gap-2 transition-colors"
+                            href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+                            <i class="fa-brands fa-linkedin-in text-brand-indigo"></i>
+                            <span class="">LinkedIn</span>
+                        </a>
+                        <a aria-label="Behance Portfolio"
+                            class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 hover:text-brand-indigo hover:border-brand-indigo text-xs font-semibold flex items-center gap-2 transition-colors"
+                            href="https://www.behance.net/bhaskarsaiutla" rel="noopener noreferrer" target="_blank">
+                            <i class="fa-brands fa-behance text-brand-indigo"></i>
+                            <span class="">Behance</span>
+                        </a>
+                        <a aria-label="Dribbble Work"
+                            class="px-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 hover:text-brand-indigo hover:border-brand-indigo text-xs font-semibold flex items-center gap-2 transition-colors"
+                            href="https://dribbble.com" rel="noopener noreferrer" target="_blank">
+                            <i class="fa-brands fa-dribbble text-pink-500"></i>
+                            <span class="">Dribbble</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Sleek Interactive Contact Form (7 Cols) -->
+            <div class="lg:col-span-7 bg-white p-6 sm:p-10 rounded-[32px] border border-slate-200 shadow-soft-card">
+                <h3 class="font-heading font-extrabold text-2xl text-brand-slate mb-1">Start a Conversation</h3>
+                <p class="text-xs sm:text-sm text-slate-500 mb-6">Whether it's a full-time senior role, relocation
+                    sponsorship, or design system consulting — I respond within 24 hours.</p>
+                <form class="space-y-4" data-purpose="contact-form" id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                                for="userName">Your Name *</label>
+                            <input
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-indigo focus:border-brand-indigo outline-none transition-all placeholder:text-slate-400"
+                                id="userName" placeholder="e.g. Sarah Jenkins" required="" type="text">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                                for="userEmail">Work Email *</label>
+                            <input
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-indigo focus:border-brand-indigo outline-none transition-all placeholder:text-slate-400"
+                                id="userEmail" placeholder="sarah@company.com" required="" type="email">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                            for="projectType">Inquiry Type</label>
+                        <select
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-indigo focus:border-brand-indigo outline-none transition-all bg-white text-slate-700"
+                            id="projectType">
+                            <option value="Full-time Senior UX Role">Full-Time Senior UX Designer Role
+                                (Relocation/Remote)</option>
+                            <option value="Design System Consulting">Design System &amp; Design Token Architecture
+                            </option>
+                            <option value="UX Audit">Heuristic &amp; Accessibility (WCAG) UX Audit</option>
+                            <option value="Contract UX Sprint">Fast-Paced UX Contract / Sprint</option>
+                            <option value="Coffee Chat">Networking / Coffee Chat</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5"
+                            for="userMessage">Message *</label>
+                        <textarea
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-indigo focus:border-brand-indigo outline-none transition-all placeholder:text-slate-400"
+                            id="userMessage"
+                            placeholder="Tell me about your product vision, challenges, or team timeline..." required=""
+                            rows="4"></textarea>
+                    </div>
+                    <button
+                        class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-indigo to-indigo-600 text-white font-heading font-extrabold text-sm hover:from-indigo-700 hover:to-brand-indigo shadow-glow-indigo transition-all transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5"
+                        id="submitFormBtn" type="submit">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span class="">Send Direct Message</span>
+                    </button>
+                </form>
+                <div class="hidden mt-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs sm:text-sm flex items-center gap-3"
+                    id="formSuccessToast">
+                    <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+                    <span class="">Thank you! Your message has been sent to Bhaskar. I will review and reply within 24
+                        hours.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END: About & Interactive Contact -->
+    <!-- BEGIN: Footer -->
+    <footer class="mt-16 border-t border-slate-200/80 pt-10 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+        data-purpose="site-footer">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-9 h-9 rounded-xl bg-brand-indigo text-white flex items-center justify-center font-heading font-bold text-sm shadow-sm">
+                    BU
+                </div>
+                <div>
+                    <span class="font-heading font-bold text-sm text-brand-slate">Bhaskar Sai Utla</span>
+                    <span class="text-slate-400 text-xs block">Senior UX Designer &amp; Design Systems Architect</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <a aria-label="LinkedIn"
+                    class="w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-brand-indigo hover:border-brand-indigo flex items-center justify-center text-sm shadow-sm transition-colors"
+                    href="https://linkedin.com" rel="noopener noreferrer" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a aria-label="Behance"
+                    class="w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-brand-indigo hover:border-brand-indigo flex items-center justify-center text-sm shadow-sm transition-colors"
+                    href="https://www.behance.net/bhaskarsaiutla" rel="noopener noreferrer" target="_blank">
+                    <i class="fa-brands fa-behance"></i>
+                </a>
+                <a aria-label="Dribbble"
+                    class="w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-brand-indigo hover:border-brand-indigo flex items-center justify-center text-sm shadow-sm transition-colors"
+                    href="https://dribbble.com" rel="noopener noreferrer" target="_blank">
+                    <i class="fa-brands fa-dribbble"></i>
+                </a>
+                <a aria-label="Direct Email"
+                    class="w-10 h-10 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-brand-indigo hover:border-brand-indigo flex items-center justify-center text-sm shadow-sm transition-colors"
+                    href="mailto:Bhaskarsai.utla@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-slate-500 font-medium">
+                <span class="">© <span id="currentYear" class="">2026</span> Bhaskar Sai Utla</span>
+                <span class="">·</span>
+                <a class="inline-flex items-center gap-1.5 font-bold text-brand-indigo hover:underline" href="#hero">
+                    <i class="fa-solid fa-arrow-up text-[10px]"></i> Back to Top
+                </a>
+            </div>
+        </div>
+    </footer>
+    <!-- END: Footer -->
+    <!-- BEGIN: JavaScript Functionality -->
+    <script data-purpose="ui-interactions">
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // 1. Mobile Drawer Navigation Logic
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const drawerBackdrop = document.getElementById('drawerBackdrop');
+        const drawerNavItems = document.querySelectorAll('.drawer-nav-item');
+
+        function toggleDrawer(open) {
+            if (open) {
+                drawerBackdrop.classList.remove('hidden');
+                setTimeout(() => {
+                    drawerBackdrop.classList.remove('opacity-0');
+                    mobileDrawer.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                drawerBackdrop.classList.add('opacity-0');
+                mobileDrawer.classList.add('translate-x-full');
+                setTimeout(() => {
+                    drawerBackdrop.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => toggleDrawer(true));
+        if (closeDrawerBtn) closeDrawerBtn.addEventListener('click', () => toggleDrawer(false));
+        if (drawerBackdrop) drawerBackdrop.addEventListener('click', () => toggleDrawer(false));
+
+        drawerNavItems.forEach(item => {
+            item.addEventListener('click', () => toggleDrawer(false));
+        });
+
+        // 2. Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollProgress = (window.scrollY / (scrollTotal || 1)) * 100;
+            document.getElementById('scrollProgressBar').style.width = scrollProgress + '%';
+        });
+
+        // 3. Dynamic Cycling Role Text
+        const roles = [
+            "Senior UX Designer",
+            "Design Systems Architect",
+            "Figma Tokens Specialist",
+            "Accessibility & WCAG Leader",
+            "Lean UX Strategist"
+        ];
+        let roleIndex = 0;
+        const dynamicRoleEl = document.getElementById('dynamicRoleText');
+
+        setInterval(() => {
+            roleIndex = (roleIndex + 1) % roles.length;
+            if (dynamicRoleEl) {
+                dynamicRoleEl.style.opacity = '0';
+                setTimeout(() => {
+                    dynamicRoleEl.textContent = roles[roleIndex];
+                    dynamicRoleEl.style.opacity = '1';
+                }, 200);
+            }
+        }, 2800);
+
+        // 4. Interactive Case Study Modal Handlers
+        const caseStudiesData = {
+            caro: {
+                category: "B2B Mobility Platform",
+                title: "CARO — Used Car Trading & Inspection App",
+                content: `
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">Problem Statement</h4>
+              <p>Used car dealers faced an average 45-minute turnaround delay while evaluating multi-point inspection sheets across fragmented physical forms, resulting in lost auction bids.</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">My Role &amp; Process</h4>
+              <p>Led UX research, dealer field interviews in Bangalore, persona creation, and end-to-end prototyping in Figma. Synthesized 40+ inspection parameters into high-priority visual chips.</p>
+            </div>
+            <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-100">
+              <h4 class="font-bold text-brand-indigo text-xs uppercase tracking-wider mb-1">Key Outcomes</h4>
+              <ul class="list-disc list-inside space-y-1.5 text-slate-700">
+                <li>Reduced appraisal time from 45 mins to 28 mins (-38%).</li>
+                <li>Increased active daily auction participation by 24%.</li>
+                <li>Achieved 4.8/5.0 dealer satisfaction score in Bangalore pilot.</li>
+              </ul>
+            </div>
+          </div>
+        `
+            },
+            swiggy: {
+                category: "Food Tech Redesign",
+                title: "Swiggy Multi-Restaurant Single Checkout",
+                content: `
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">The Friction</h4>
+              <p>Users in family or group settings frequently drop out of ordering because existing apps force separate transactions for food and dessert/drinks from adjacent restaurants.</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">UX Solution</h4>
+              <p>Formulated a paired-delivery radius model. Designed a unified multi-tab shopping bag with single swipe payment and progressive tracking timeline.</p>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-100">
+              <h4 class="font-bold text-amber-800 text-xs uppercase tracking-wider mb-1">Impact Metrics</h4>
+              <ul class="list-disc list-inside space-y-1.5 text-slate-700">
+                <li>24% reduction in checkout abandonment.</li>
+                <li>Average basket value rose by 2.1x in user testing cohorts.</li>
+                <li>Zero cognitive overload reported during user testing.</li>
+              </ul>
+            </div>
+          </div>
+        `
+            },
+            skillbridge: {
+                category: "EdTech SaaS Platform",
+                title: "SkillBridge — Student Mentorship Ecosystem",
+                content: `
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">The Challenge</h4>
+              <p>Tier-2 and rural design students struggled with opaque portfolio reviews and lacked a structured pathway to connect with experienced industry leads.</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">Design Strategy</h4>
+              <p>Constructed an accessible design system compliant with WCAG AA guidelines. Designed skill-mapping quizzes that automatically matched students to targeted 1-on-1 critique slots.</p>
+            </div>
+            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
+              <h4 class="font-bold text-emerald-800 text-xs uppercase tracking-wider mb-1">Results</h4>
+              <ul class="list-disc list-inside space-y-1.5 text-slate-700">
+                <li>92% session completion rate within first 30 days.</li>
+                <li>Full WCAG 2.1 AA accessibility score verified by screen readers.</li>
+              </ul>
+            </div>
+          </div>
+        `
+            },
+            foodsafety: {
+                category: "Enterprise Compliance Dashboard",
+                title: "Food Safety Guard — QA Supplier Dashboard",
+                content: `
+          <div class="space-y-4">
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">Business Pain Point</h4>
+              <p>Food distributors struggled with non-standardized audit spreadsheets, creating compliance errors that took 3–5 days to reconcile with suppliers.</p>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-slate text-xs uppercase tracking-wider mb-1">The Solution</h4>
+              <p>Designed a responsive tablet &amp; desktop dashboard with real-time incident reporting, visual color-coded risk alerts, and automated audit trails.</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
+              <h4 class="font-bold text-blue-800 text-xs uppercase tracking-wider mb-1">Measurable Impact</h4>
+              <ul class="list-disc list-inside space-y-1.5 text-slate-700">
+                <li>Eliminated 15+ friction steps in logging compliance deviations.</li>
+                <li>Reduced incident reporting turnaround by 45%.</li>
+              </ul>
+            </div>
+          </div>
+        `
+            }
+        };
+
+        const modal = document.getElementById('caseStudyModal');
+        const modalCategory = document.getElementById('modalCategory');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+
+        function openCaseStudy(key) {
+            const data = caseStudiesData[key];
+            if (!data) return;
+
+            modalCategory.textContent = data.category;
+            modalTitle.textContent = data.title;
+            modalContent.innerHTML = data.content;
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCaseStudy() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeCaseStudy();
+            }
+        });
+
+        // 5. Contact Form Submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitFormBtn');
+            const toast = document.getElementById('formSuccessToast');
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>Sending Message...</span>';
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>Message Delivered!</span>';
+                toast.classList.remove('hidden');
+                document.getElementById('contactForm').reset();
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane text-xs"></i><span>Send Direct Message</span>';
+                }, 4000);
+            }, 1000);
+        }
+    </script>
+    <!-- END: JavaScript Functionality -->
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

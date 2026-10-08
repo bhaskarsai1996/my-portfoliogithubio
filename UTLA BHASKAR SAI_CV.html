@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UTLA BHASKAR SAI | CV</title>
+  <style>
+    :root {
+      --bg: #f5f5f3;
+      --paper: #ffffff;
+      --ink: #1d1d1f;
+      --muted: #4b5563;
+      --line: #d9dde2;
+      --accent: #2a5d8f;
+      --accent-soft: #eaf2fb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .resume {
+      width: min(900px, calc(100% - 36px));
+      margin: 32px auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      padding: 28px 38px 20px;
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .contact {
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .contact span {
+      white-space: nowrap;
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    section {
+      margin-top: 14px;
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 4px;
+    }
+
+    p, li {
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .summary {
+      margin: 0;
+      text-align: justify;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px 18px;
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .skills-grid li {
+      list-style: disc;
+      margin-bottom: 4px;
+    }
+
+    .skills-grid strong {
+      display: inline;
+      font-weight: 700;
+    }
+
+    .job {
+      margin-bottom: 14px;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .job-company {
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .job-role {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .job-date {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    ul.bullets {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+
+    ul.bullets li {
+      margin-bottom: 6px;
+    }
+
+    .project-list, .education-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .project-list li, .education-list li {
+      margin-bottom: 8px;
+    }
+
+    .education-item {
+      margin-bottom: 10px;
+    }
+
+    .languages {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .languages li {
+      margin-bottom: 4px;
+      list-style: disc;
+    }
+
+    @media (max-width: 640px) {
+      .resume {
+        width: calc(100% - 20px);
+        padding: 20px 18px 16px;
+        margin: 12px auto;
+      }
+      .contact {
+        font-size: 13px;
+      }
+      .job-header {
+        display: block;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+      .resume {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="resume">
+    <header class="header">
+      <h1>UTLA BHASKAR SAI</h1>
+      <div class="contact">
+        <span>Bangalore, Karnataka</span>
+        <span>|</span>
+        <span>7013197658</span>
+        <span>|</span>
+        <span><a href="mailto:Bhaskarsai.utla@gmail.com">Bhaskarsai.utla@gmail.com</a></span>
+        <span>|</span>
+        <span><a href="https://www.linkedin.com/in/bhaskarsai-utla-1224511a0" target="_blank" rel="noreferrer">LinkedIn</a></span>
+        <span>|</span>
+        <span><a href="https://www.behance.net/bhaskarsaiutla" target="_blank" rel="noreferrer">Behance</a></span>
+      </div>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p class="summary">Visual Designer with 6 years of experience delivering end-to-end user experience solutions for web and mobile applications. Skilled in applying design thinking and Lean UX methodologies to balance user needs with business goals. Experienced in creating scalable UI kits and design systems, and in producing comprehensive UI specifications for development teams. Strong background in creating personas, storyboards, scenarios, and high-fidelity prototypes using industry-standard tools to drive iterative interaction design. Open to relocation opportunities.</p>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul class="skills-grid">
+        <li><strong>UX Research &amp; Strategy:</strong> UX Design, Research, Usability Testing, Design Thinking, Lean UX Methodologies, Personas, Storyboarding, Scenarios, Task Analysis.</li>
+        <li><strong>UI Design &amp; Prototyping:</strong> Wireframing, Prototyping, Design Systems, Visual Design, Interaction Design, User Flow Diagrams, UI Specifications.</li>
+        <li><strong>Design Tools:</strong> Figma, Adobe XD, Sketch, Photoshop, Illustrator.</li>
+        <li><strong>Development &amp; AI:</strong> HTML, CSS, JavaScript (working knowledge), ChatGPT, Claude, Gemini, Figma AI.</li>
+        <li><strong>Professional Skills:</strong> Problem Solving, Collaboration, Facilitation, Presentation, Interpersonal Skills.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">TECH MAHINDRA</div>
+          <div class="job-location">Bangalore</div>
+        </div>
+        <div class="job-header">
+          <div class="job-role">UX Designer</div>
+          <div class="job-date">Aug 2021 – Aug 2025</div>
+        </div>
+        <ul class="bullets">
+          <li>Architected and managed a scalable UI kit and design system, delivering comprehensive UI specifications for development that reduced the design-to-development handoff cycle by 30%.</li>
+          <li>Collaborated closely with project leads, project managers, and development teams to plan, prioritize, and analyze requirements for four major web platforms.</li>
+          <li>Facilitated design workshops and presented high-fidelity, WCAG-compliant prototypes to stakeholders, using strong presentation and interpersonal skills to drive alignment.</li>
+          <li>Produced user requirements specifications, user flow diagrams, and wireframes based on continuous exploration of interaction design concepts.</li>
+          <li>Conducted heuristic and usability testing, identifying 15+ critical friction points and implementing iterative design fixes that increased user task success rates by 20%.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <div class="job-company">OMNION PREMEDIA PVT. LTD.</div>
+          <div class="job-location">Bangalore</div>
+        </div>
+        <div class="job-header">
+          <div class="job-role">Image Editor / Junior Image Editor</div>
+          <div class="job-date">May 2018 – Jul 2021</div>
+        </div>
+        <ul class="bullets">
+          <li>Maintained a 96.8% quality accuracy rating while overseeing more than 500 high-fidelity digital assets weekly for global brands.</li>
+          <li>Consistently met 100% of production deadlines while refining visual design elements critical to high-volume e-commerce catalogs.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <ul class="project-list">
+        <li><strong>CARO - CAR TRADING APP (B2B):</strong> Designed an end-to-end interface for trading second-hand cars. Produced personas, scenarios, and conceptual models through user interviews and affinity mapping, and delivered high-fidelity mobile prototypes.</li>
+        <li><strong>SWIGGY REDESIGN (CONCEPT):</strong> Led a Lean UX redesign focused on conversion optimization. Created user flow diagrams for a multi-restaurant single-payment feature and refined interaction design through rigorous usability testing.</li>
+        <li><strong>STUDENT SKILL DEVELOPMENT (SAAS):</strong> Developed a modern UI/UX for an e-learning platform. Mapped complex user flows and storyboards from discovery to mentor connection to ensure seamless interaction design.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Education &amp; Certifications</h2>
+      <ul class="education-list">
+        <li><strong>UI/UX Design Certification:</strong> My Captain (Feb 2023 – Oct 2023, Bangalore)</li>
+        <li><strong>Bachelor's Degree (History):</strong> GITAM University (Aug 2019 – May 2022, Visakhapatnam)</li>
+        <li><strong>Graphic &amp; Web Designing Certification:</strong> Arena Animation (Sep 2017 – Aug 2019, Bangalore)</li>
+        <li><strong>Diploma in Electrical and Electronics Engineering:</strong> Diviseema Polytechnic (July 2013 – May 2016, Avanigadda)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Languages</h2>
+      <ul class="languages">
+        <li>English: Professional</li>
+        <li>Telugu: Native</li>
+        <li>Hindi: Intermediate</li>
+        <li>Kannada: Intermediate</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
